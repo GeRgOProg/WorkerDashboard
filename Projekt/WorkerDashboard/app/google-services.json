@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "449422462439",
+    "firebase_url": "https://mobilprog-workerdashboard-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "mobilprog-workerdashboard",
+    "storage_bucket": "mobilprog-workerdashboard.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:449422462439:android:86972058a4698e64b60142",
+        "android_client_info": {
+          "package_name": "hu.pannon.workerdashboard"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "449422462439-bd6k41to8cbohdk2de5g7m7isgsmeoud.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1gRYt5EtRUCHicroP1iLPrMkNLNnR_I4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "449422462439-bd6k41to8cbohdk2de5g7m7isgsmeoud.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
