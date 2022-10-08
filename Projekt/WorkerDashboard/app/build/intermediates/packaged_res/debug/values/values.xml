@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="app_main">#0D97E1</color>
+    <color name="black">#FF000000</color>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="white">#FFFFFFFF</color>
+    <string name="address_hun">Lakcím:</string>
+    <string name="app_name">Munkás nyilvántartó alkalmazás</string>
+    <string name="birthdate_hun">Születés ideje:</string>
+    <string name="button_finish_hun">Befejezés</string>
+    <string name="button_fire_hun">Munkavállaló elbocsátása</string>
+    <string name="button_hire_hun">Munkavállaló felvétele</string>
+    <string name="button_login_hun">Bejelentkezés</string>
+    <string name="button_modify_hun">Meglévő adatok módosítása</string>
+    <string name="button_next_hun">Tovább</string>
+    <string name="button_ok_hun">Mehet</string>
+    <string name="button_prev_hun">Vissza</string>
+    <string name="button_quit_hun">Kilépés</string>
+    <string name="city_generic_hun">Város:</string>
+    <string name="city_hun">Város:</string>
+    <string name="citypicker_hun">Város kiválasztása</string>
+    <string name="datepicker_hun">Dátum kiválasztása</string>
+    <string name="default_web_client_id" translatable="false">449422462439-bd6k41to8cbohdk2de5g7m7isgsmeoud.apps.googleusercontent.com</string>
+    <string name="fire_generic_hun">Elbocsát</string>
+    <string name="firebase_database_url" translatable="false">https://mobilprog-workerdashboard-default-rtdb.europe-west1.firebasedatabase.app</string>
+    <string name="fullname_hun">Név:</string>
+    <string name="gcm_defaultSenderId" translatable="false">449422462439</string>
+    <string name="gender_female_hun">Nő</string>
+    <string name="gender_label_hun">Neme:</string>
+    <string name="gender_male_hun">Férfi</string>
+    <string name="google_api_key" translatable="false">AIzaSyA1gRYt5EtRUCHicroP1iLPrMkNLNnR_I4</string>
+    <string name="google_app_id" translatable="false">1:449422462439:android:86972058a4698e64b60142</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyA1gRYt5EtRUCHicroP1iLPrMkNLNnR_I4</string>
+    <string name="google_storage_bucket" translatable="false">mobilprog-workerdashboard.appspot.com</string>
+    <string name="group_header_hun">Csoportok kiválasztása</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="id_num_hun">Személyi igazolvány száma:</string>
+    <string name="overview_header_hun">Összegzés</string>
+    <string name="password_hun">Jelszó:</string>
+    <string name="photo_check_hun">Fénykép megtekintése</string>
+    <string name="photo_header_hun">Profilkép készítése</string>
+    <string name="position_hun">Pozíció:</string>
+    <string name="privilege_header_hun">Jogosultságok kiválasztása</string>
+    <string name="project_id" translatable="false">mobilprog-workerdashboard</string>
+    <string name="qr_code_label_hun">Alkalmazotti lap QR kódja:</string>
+    <string name="salary_hun">Fizetése:</string>
+    <string name="success_label_hun">Bevitel rögzítve!</string>
+    <string name="territory_hun">Terület:</string>
+    <string name="title_hun">Munkavállaló nyilvántartás-kezelő alkalmazás</string>
+    <string name="travellingsupport_generic_hun">Utazási támogatás mértéke: </string>
+    <string name="username_hun">Felhasználónév:</string>
+    <string name="welcome_eng">Welcome to the application!</string>
+    <string name="welcome_generic_hun">Üdvözöljük!</string>
+    <string name="welcome_hun">Üdvözöljük az alkalmazásban!</string>
+    <style name="Theme.WorkerDashboard" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorOnPrimary">@color/white</item>
+        
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+        
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        
+    </style>
+</resources>

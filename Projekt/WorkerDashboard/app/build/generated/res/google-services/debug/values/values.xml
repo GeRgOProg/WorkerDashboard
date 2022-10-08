@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">449422462439-bd6k41to8cbohdk2de5g7m7isgsmeoud.apps.googleusercontent.com</string>
+    <string name="firebase_database_url" translatable="false">https://mobilprog-workerdashboard-default-rtdb.europe-west1.firebasedatabase.app</string>
+    <string name="gcm_defaultSenderId" translatable="false">449422462439</string>
+    <string name="google_api_key" translatable="false">AIzaSyA1gRYt5EtRUCHicroP1iLPrMkNLNnR_I4</string>
+    <string name="google_app_id" translatable="false">1:449422462439:android:86972058a4698e64b60142</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyA1gRYt5EtRUCHicroP1iLPrMkNLNnR_I4</string>
+    <string name="google_storage_bucket" translatable="false">mobilprog-workerdashboard.appspot.com</string>
+    <string name="project_id" translatable="false">mobilprog-workerdashboard</string>
+</resources>
