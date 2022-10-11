@@ -30,7 +30,7 @@
         app:layout_constraintVertical_bias="0.183" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/imageView_qr"
         android:layout_width="240dp"
         android:layout_height="238dp"
         android:src="@mipmap/ic_launcher"

@@ -16,7 +16,8 @@
         app:layout_constraintHorizontal_bias="0.386"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.245">
+        app:layout_constraintVertical_bias="0.245"
+        app:selectionRequired="true">
 
     </com.google.android.material.chip.ChipGroup>
 

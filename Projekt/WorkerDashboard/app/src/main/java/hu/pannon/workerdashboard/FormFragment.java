@@ -37,11 +37,11 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 
-
 public class FormFragment extends Fragment {
 
     private Worker worker = Worker.getInstance();
-    private String apiKey = "AIzaSyB7vKjtMe8lB1-wgbiUijvyLw8qLSYbapk";
+    //Google api key for a google map input field. We couldn't make it because it costs like 300$ / 9 months..
+   // private String apiKey = "AIzaSyB7vKjtMe8lB1-wgbiUijvyLw8qLSYbapk";
     private int mYear, mMonth, mDay, mHour, mMinute;
 
     double lat1 = 0, long1 = 0, lat2 = 0, long2 = 0;
@@ -69,6 +69,7 @@ public class FormFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        //Setting up user interface
        EditText salary = (EditText)(getView().findViewById(R.id.edittext_hiresalary));
        salary.setText("0");
        EditText hireAddress = (EditText)(getView().findViewById(R.id.edittext_hireaddress));
@@ -78,20 +79,23 @@ public class FormFragment extends Fragment {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         ((Spinner)getView().findViewById(R.id.spinner_hiregender)).setAdapter(adapter);
 
+        //If address input field has changed, event trigger will fire
         ((EditText)(getView().findViewById(R.id.edittext_hireaddress))).addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
+                //This is not needed at all..
             }
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                //Getting city from input [Address = City, everything else]
                 String address = charSequence.toString();
                 if(address.indexOf(",") != -1)
                 {
                     String[] addressSnippets = address.split(",");
 
                      String new_city = addressSnippets[0];
+                     //If the city has changed, calculate the distance
                     if(!new_city.equals(city)) {
                         city = new_city;
                         Geocoder geocoder = new Geocoder(getContext());
@@ -126,6 +130,7 @@ public class FormFragment extends Fragment {
                         double kilometers = distance(lat1, lat2, long1, long2);
                         double supportFee = Math.round(kilometers * 15);
                         TextView travellingSupportGui = ((TextView) (getView().findViewById(R.id.textview_travellingsupport)));
+                        //Travelling support estimated by 15 Ft/km.
                         travellingSupportGui.setText("Utazási támogatás mértéke: " + String.valueOf(supportFee) + " Ft (" + String.valueOf(Math.round(kilometers)) + " km) ");
                     }
                 }
@@ -133,15 +138,16 @@ public class FormFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable editable) {
-
+                //This is not needed at all..
             }
         });
 
+        //DatePicker
         ((EditText)(getView().findViewById(R.id.edittext_hirebirthdate))).setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean b) {
 
-
+                //Only open calculator if the input field has focus, otherwise it will look funny..
                 if(((EditText)(getView().findViewById(R.id.edittext_hirebirthdate))).hasFocus()) {
                     InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
@@ -192,49 +198,101 @@ public class FormFragment extends Fragment {
             public void onClick(View view) {
 
                 View currentView = getView();
+                EditText hireName = (EditText)currentView.findViewById(R.id.edittext_hirename);
+                EditText hireBirthDate = (EditText)currentView.findViewById(R.id.edittext_hirebirthdate);
+                EditText hireAddress = (EditText)currentView.findViewById(R.id.edittext_hireaddress);
+                EditText hireIdNum = (EditText)currentView.findViewById(R.id.edittext_hireidnum);
+                EditText hireSalary = (EditText)currentView.findViewById(R.id.edittext_hiresalary);
+                EditText hirePosition = (EditText)currentView.findViewById(R.id.edittext_hireposition);
+                EditText hireTerritory = (EditText)currentView.findViewById(R.id.edittext_hireterritory);
 
-                worker.setName(((EditText) currentView.findViewById(R.id.edittext_hirename)).getText().toString());
-                worker.setAddress(((EditText) currentView.findViewById(R.id.edittext_hireaddress)).getText().toString());
-                worker.setBirthdate(((EditText) currentView.findViewById(R.id.edittext_hirebirthdate)).getText().toString());
-                worker.setIdCardNum(((EditText) currentView.findViewById(R.id.edittext_hireidnum)).getText().toString());
-                String selectedGender = ((Spinner) currentView.findViewById(R.id.spinner_hiregender)).getSelectedItem().toString();
-                switch(selectedGender)
+                if(hireName.getText().toString().isEmpty())
                 {
-                    case "Férfi":
-                    {
-                        selectedGender = "Male";
-                    }break;
-
-                    case "Nő":
-                    {
-                        selectedGender = "Female";
-                    }break;
-
-                    case "Egyéb": {
-                        selectedGender = "Other";
-                    }break;
-
-                    default:
-                    {
-                        selectedGender = "Other";
-                    }break;
+                    hireName.setError("Kérem töltse ki a mezőt!");
                 }
-                worker.setGender(selectedGender);
-                worker.setSalary(Integer.valueOf(((EditText) currentView.findViewById(R.id.edittext_hiresalary)).getText().toString()));
-                worker.setTerritory(((EditText) currentView.findViewById(R.id.edittext_hireterritory)).getText().toString());
-                worker.setPosition(((EditText) currentView.findViewById(R.id.edittext_hireposition)).getText().toString());
+                else if(hireBirthDate.getText().toString().isEmpty())
+                {
+                    hireBirthDate.setError("Kérem töltse ki a mezőt!");
+
+                }
+                else if(hireAddress.getText().toString().isEmpty())
+                {
+                    hireAddress.setError("Kérem töltse ki a mezőt!");
+
+                }
+                else if(hireAddress.getText().toString().split(",").length != 2)
+                {
+                    hireAddress.setError("Kérem töltse ki a mezőt a következő forma szerint: Város, Utca házszám.");
+
+                }
+                else if(hireIdNum.getText().toString().isEmpty())
+                {
+                    hireIdNum.setError("Kérem töltse ki a mezőt!");
+
+                }
+                else if(hireSalary.getText().toString().isEmpty())
+                {
+                    hireSalary.setError("Kérem töltse ki a mezőt!");
+
+                }
+                else if(hirePosition.getText().toString().isEmpty())
+                {
+                    hirePosition.setError("Kérem töltse ki a mezőt!");
+                }
+                else if(hireTerritory.getText().toString().isEmpty())
+                {
+                    hireTerritory.setError("Kérem töltse ki a mezőt!");
+
+                }
+                else
+                {
+                    //Worker initiation
+                    worker.setName(((EditText) currentView.findViewById(R.id.edittext_hirename)).getText().toString());
+                    worker.setAddress(((EditText) currentView.findViewById(R.id.edittext_hireaddress)).getText().toString());
+                    worker.setBirthdate(((EditText) currentView.findViewById(R.id.edittext_hirebirthdate)).getText().toString());
+                    worker.setIdCardNum(((EditText) currentView.findViewById(R.id.edittext_hireidnum)).getText().toString());
+                    String selectedGender = ((Spinner) currentView.findViewById(R.id.spinner_hiregender)).getSelectedItem().toString();
+                    switch(selectedGender)
+                    {
+                        case "Férfi":
+                        {
+                            selectedGender = "Male";
+                        }break;
+
+                        case "Nő":
+                        {
+                            selectedGender = "Female";
+                        }break;
+
+                        case "Egyéb": {
+                            selectedGender = "Other";
+                        }break;
+
+                        default:
+                        {
+                            selectedGender = "Other";
+                        }break;
+                    }
+                    worker.setGender(selectedGender);
+                    worker.setSalary(Integer.valueOf(((EditText) currentView.findViewById(R.id.edittext_hiresalary)).getText().toString()));
+                    worker.setTerritory(((EditText) currentView.findViewById(R.id.edittext_hireterritory)).getText().toString());
+                    worker.setPosition(((EditText) currentView.findViewById(R.id.edittext_hireposition)).getText().toString());
 
 
+                    //Fragment transaction
+                    Fragment fragment = new GroupFragment();
+                    FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.fragmentHolder, fragment);
+                    fragmentTransaction.addToBackStack(null);
+                    fragmentTransaction.commit();
+                }
 
-                Fragment fragment = new GroupFragment();
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragmentHolder, fragment);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
+
             }
         });
 
+        ////Beta code snippet, didn't work..
         //Places.initialize(getContext(), apiKey);
 
        // hireAddress.setFocusable(false);
@@ -256,6 +314,7 @@ public class FormFragment extends Fragment {
 
     }
 
+    //Function for distance calculation
     public double distance(double lat1, double lat2, double lon1, double lon2)
     {
 

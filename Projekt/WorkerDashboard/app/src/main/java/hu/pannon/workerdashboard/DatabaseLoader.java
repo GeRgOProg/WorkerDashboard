@@ -49,7 +49,7 @@ public class DatabaseLoader {
         workerMap.put("name", worker.getName());
         workerMap.put("address", worker.getAddress());
         workerMap.put("birthdate", worker.getBirthdate());
-        workerMap.put("id_card_num", worker.getAddress());
+        workerMap.put("id_card_num", worker.getIdCardNum());
         workerMap.put("gender", worker.getGender());
         workerMap.put("salary", worker.getSalary());
         workerMap.put("territory", worker.getTerritory());

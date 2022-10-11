@@ -38,5 +38,6 @@
     <string name="citypicker_hun">Város kiválasztása</string>
     <string name="city_generic_hun">Város:</string>
     <string name="travellingsupport_generic_hun">Utazási támogatás mértéke: </string>
+    <string name="video_button_hun">Videó lejátszása</string>
     <string name="welcome_eng">Welcome to the application!</string>
 </resources>

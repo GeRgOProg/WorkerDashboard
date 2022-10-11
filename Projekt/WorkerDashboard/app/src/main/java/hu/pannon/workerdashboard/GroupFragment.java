@@ -53,6 +53,7 @@ public class GroupFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        //Setting up chipgroup
         ChipGroup chipGroup = (ChipGroup) (getView().findViewById(R.id.chipgroup_group));
         ArrayList<String> workers = new ArrayList<>();
         DatabaseLoader.getInstance().database.collection("Group").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -80,7 +81,7 @@ public class GroupFragment extends Fragment {
                 }
                 else
                 {
-                    Log.d("db_error_tag", "Adatbázis beolvasási hiba: getWorkerNames");
+                    Log.d("db_error_tag", "Adatbázis beolvasási hiba: getGroups");
                 }
             }
 

@@ -49,6 +49,7 @@ public class PrivilegeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        //Setting up chipgroup
         ChipGroup chipGroup = (ChipGroup) (getView().findViewById(R.id.chipgroup_privilege));
         ArrayList<String> privileges = new ArrayList<>();
         DatabaseLoader.getInstance().database.collection("Privilege").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -75,7 +76,7 @@ public class PrivilegeFragment extends Fragment {
                 }
                 else
                 {
-                    Log.d("db_error_tag", "Adatbázis beolvasási hiba: getWorkerNames");
+                    Log.d("db_error_tag", "Adatbázis beolvasási hiba: getPrivileges");
                 }
             }
 

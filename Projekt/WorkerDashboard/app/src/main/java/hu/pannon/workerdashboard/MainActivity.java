@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
         super.onCreate(savedInstanceState);
 
+        //Shaking detection for dark mode
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         Sensor sensorShake = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         SensorEventListener sensorEventListener = new SensorEventListener() {
@@ -76,6 +77,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         sensorManager.registerListener(sensorEventListener, sensorShake, SensorManager.SENSOR_DELAY_NORMAL);
 
 
+        //Initializing firebase project
         FirebaseApp.initializeApp(this);
         DatabaseLoader dbLoader = DatabaseLoader.getInstance();
         FirebaseFirestore db = FirebaseFirestore.getInstance();

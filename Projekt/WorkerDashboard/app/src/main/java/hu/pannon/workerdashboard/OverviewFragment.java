@@ -39,17 +39,8 @@ private Worker worker = Worker.getInstance();
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-         /*
-         private String name;
-    private String address;
-    private String birthdate;
-    private String idCardNum;
-    private String gender;
-    private int salary;
-    private String territory;
-    private String position;
-         */
 
+        //Setting up user interface
         View currentView = getView();
         ((EditText)currentView.findViewById(R.id.edittext_overviewname)).setText(worker.getName());
         ((EditText)currentView.findViewById(R.id.edittext_overviewaddress)).setText(worker.getAddress());

@@ -55,10 +55,11 @@ public class LoginFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        //VEDD MAJD KI
+        //Burnt in login credentials for testing
         ((EditText)(getView().findViewById(R.id.edittext_username))).setText("admin");
         ((EditText)(getView().findViewById(R.id.edittext_password))).setText("admin");
 
+        //Login section
         getView().findViewById(R.id.btn_login).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -76,7 +77,7 @@ public class LoginFragment extends Fragment {
                     ((EditText)(getView().findViewById(R.id.edittext_password))).setError("Kérem töltse ki a mezőt!");
                 }
                 else {
-                    final boolean[] allGood = {false, false};
+                    final boolean[] allGood = {false, false}; //Two conditions for successful login: Password is correct, User exists
                     DatabaseLoader.getInstance().database.collection("User").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -89,18 +90,15 @@ public class LoginFragment extends Fragment {
                                     {
                                         if(document.get("password").toString().equals(password))
                                         {
-                                            allGood[0] = true; //Jó a jelszó
-                                            allGood[1] = true; //Létezik a felhasználü
+                                            allGood[0] = true; //Password is correct
+                                            allGood[1] = true; //User exists
                                             user.setUsername(username);
                                             user.setPassword(password);
-
-
                                         }
                                         else
                                         {
-                                            allGood[1] = true; //Létezik a felhasználó
+                                            allGood[1] = true; //User exists
                                             ((EditText)(getView().findViewById(R.id.edittext_password))).setError("Rossz jelszót adott meg!\nKérem próbálja újra!");
-
                                         }
                                     }
                                 }
@@ -116,12 +114,11 @@ public class LoginFragment extends Fragment {
                                 {
                                     if(allGood[1] == false)
                                         ((EditText)(getView().findViewById(R.id.edittext_username))).setError("Ilyen felhasználó nem létezik!");
-
                                 }
                             }
                             else
                             {
-                                Log.d("db_error_tag", "Adatbázis beolvasási hiba: getWorkerNames");
+                                Log.d("db_error_tag", "Adatbázis beolvasási hiba: Login");
                             }
                         }
 
