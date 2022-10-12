@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 
 public class HomeFragment extends Fragment {
 
+    private String videoLink = "https://youtu.be/g5Lm75LuGfo";
 
     public HomeFragment() {
     }
@@ -93,7 +94,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.youtube.com/watch?v=poa_QBvtIBA")));
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(videoLink)));
                 Log.i("Video", "Video Playing....");
             }
         });
