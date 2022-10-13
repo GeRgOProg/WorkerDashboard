@@ -371,6 +371,37 @@ public class ModifyFragment extends Fragment {
                 EditText edittext_territory = (EditText) getView().findViewById(R.id.edittext_territory);
                 EditText edittext_address = (EditText) getView().findViewById(R.id.edittext_address);
 
+                worker.setIdCardNum(edittext_modifyidcardnum.getText().toString());
+                worker.setBirthdate(edittext_birthdate.getText().toString());
+                worker.setSalary(Integer.valueOf(edittext_salary.getText().toString()));
+                worker.setPosition(edittext_position.getText().toString());
+                worker.setTerritory(edittext_territory.getText().toString());
+                worker.setAddress(edittext_address.getText().toString());
+
+                Spinner spinner_gender = (Spinner) getView().findViewById(R.id.spinner_gender);
+                switch (spinner_gender.getSelectedItem().toString())
+                {
+                    case "Férfi":
+                    {
+                        worker.setGender("Male");
+                    }break;
+
+                    case "Nő":
+                    {
+                        worker.setGender("Female");
+
+                    }break;
+
+                    case "Egyéb":
+                    {
+                        worker.setGender("Other");
+
+                    }
+                }
+
+                Spinner spinner_name = ((Spinner)getView().findViewById(R.id.spinner_name));
+                worker.setName(spinner_name.getSelectedItem().toString());
+
                 if(edittext_address.getText().toString().isEmpty()) {
                     edittext_address.setError("Kérem töltse ki a mezőt!");
                 }
