@@ -98,5 +98,19 @@ public class HomeFragment extends Fragment {
                 Log.i("Video", "Video Playing....");
             }
         });
+
+        //New functions: Phone dialing and calling + Multi-language app (Hungarian and English) - 2022.11.13.
+        //Phone dialing
+        getView().findViewById(R.id.btn_phone).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Fragment fragment = new PhoneFragment();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.fragmentHolder, fragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
     }
 }

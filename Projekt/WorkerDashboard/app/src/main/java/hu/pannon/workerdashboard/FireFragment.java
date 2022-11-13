@@ -83,21 +83,18 @@ public class FireFragment extends Fragment {
 
         });
 
+        //Change: Copied setOnItemSelected body into setOnItemClickListener body. Now it should work correctly. 2022-10-18, Keresztúri Gergő
         //Item selected on ListView -> Setting current worker's name to variable
-        ((ListView)(getView().findViewById(R.id.listview_workerfire))).setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        ((ListView)(getView().findViewById(R.id.listview_workerfire))).setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 ListView simpleList = (ListView) getView().findViewById(R.id.listview_workerfire);
                 currentWorker= simpleList.getItemAtPosition(i).toString();
                 Log.d("success_tag", "Currentworker: "+currentWorker);
                 Toast.makeText(getContext(),currentWorker+" kiválasztva!",Toast.LENGTH_SHORT).show();
             }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
         });
+
 
         //Back
         getView().findViewById(R.id.btn_fireprev).setOnClickListener(new View.OnClickListener() {
